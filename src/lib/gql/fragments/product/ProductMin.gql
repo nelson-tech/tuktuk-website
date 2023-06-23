@@ -1,0 +1,5 @@
+fragment ProductMinFragment on Product {
+  id
+  title
+  slug
+}

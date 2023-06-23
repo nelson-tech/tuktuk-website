@@ -1,0 +1,5 @@
+fragment BreadcrumbsFragment on Category_Breadcrumbs {
+  id
+  label
+  url
+}

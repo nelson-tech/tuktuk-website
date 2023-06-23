@@ -1,0 +1,78 @@
+query GetGlobals {
+  Settings {
+    colors {
+      primary
+      secondary
+    }
+    logos {
+      main {
+        ...MediaFragment
+      }
+      favIcon {
+        ...MediaFragment
+      }
+    }
+  }
+  Menu {
+    mainMenu {
+      links {
+        ... on Menu_MainMenu_Links {
+          id
+          link {
+            ...NavLinkFragment
+            megaMenu
+          }
+          children {
+            id
+            link {
+              ...NavLinkFragment
+            }
+            children {
+              id
+              link {
+                ...NavLinkFragment
+              }
+            }
+          }
+        }
+      }
+    }
+
+    mobileMenu {
+      links {
+        ... on Menu_MobileMenu_Links {
+          id
+          link {
+            ...NavLinkFragment
+            megaMenu
+          }
+          children {
+            id
+            link {
+              ...NavLinkFragment
+              megaMenu
+            }
+            children {
+              id
+              link {
+                ...NavLinkFragment
+                megaMenu
+              }
+            }
+          }
+        }
+      }
+    }
+
+    footerMenu {
+      links {
+        ... on Menu_FooterMenu_Links {
+          id
+          link {
+            ...NavLinkFragment
+          }
+        }
+      }
+    }
+  }
+}

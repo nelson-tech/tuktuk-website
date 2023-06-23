@@ -1,0 +1,5 @@
+mutation RemoveCartItem($product: String!) {
+  removeCartItem(product: $product) {
+    ...CartFragment
+  }
+}

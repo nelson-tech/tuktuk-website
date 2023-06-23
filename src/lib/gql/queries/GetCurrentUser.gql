@@ -1,0 +1,13 @@
+query GetCurrentUser {
+  meUser {
+    token
+    user {
+      ...UserFragment
+      cart {
+        ...CartFragment
+      }
+    }
+    exp
+    collection
+  }
+}

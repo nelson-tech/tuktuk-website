@@ -1,0 +1,12 @@
+fragment ProductOverviewFragment on Product {
+	...ProductMinFragment
+	categories {
+		...CategoryFragment
+	}
+	description
+	image {
+		...MediaFragment
+	}
+	stock
+	price
+}

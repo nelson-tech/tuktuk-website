@@ -1,0 +1,13 @@
+fragment CategoryFragment on Category {
+  id
+  title
+  slug
+  parent {
+    id
+    title
+    slug
+  }
+  breadcrumbs {
+    ...BreadcrumbsFragment
+  }
+}

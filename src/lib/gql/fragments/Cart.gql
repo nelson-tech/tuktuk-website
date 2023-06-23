@@ -1,0 +1,17 @@
+fragment CartFragment on Cart {
+	id
+	items {
+		id
+		product {
+			...ProductOverviewFragment
+		}
+		quantity
+	}
+	count
+	user {
+		id
+	}
+	createdAt
+	updatedAt
+	total
+}

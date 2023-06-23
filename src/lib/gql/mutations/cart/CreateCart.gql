@@ -1,0 +1,5 @@
+mutation CreateCart($items: [mutationCart_ItemsInput]) {
+  createCart(data: { items: $items }) {
+    ...CartFragment
+  }
+}

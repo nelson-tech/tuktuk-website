@@ -1,0 +1,5 @@
+mutation DeleteCart($id: String!) {
+  deleteCart(id: $id) {
+    ...CartFragment
+  }
+}

@@ -1,0 +1,19 @@
+fragment NavLinkFragment on NavLink {
+  label
+  url
+  reference {
+    value {
+      ... on Page {
+        id
+        title
+        slug
+      }
+      ... on Product {
+        id
+        title
+        slug
+      }
+    }
+  }
+  newTab
+}
