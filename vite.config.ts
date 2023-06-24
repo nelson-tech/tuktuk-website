@@ -3,6 +3,9 @@ import houdini from 'houdini/vite';
 import { defineConfig } from 'vite';
 import svg from '@poppanator/sveltekit-svg';
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 export default defineConfig({
 	plugins: [
 		houdini(),
