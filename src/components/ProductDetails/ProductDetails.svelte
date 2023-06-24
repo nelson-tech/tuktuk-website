@@ -81,7 +81,7 @@
 				class="flex justify-center items-center w-full h-full"
 			>
 				<Minus
-					class={`w-8 fill-white ${quantity < 2 ? 'opacity-0' : 'opacity-100'} transition-opacity`}
+					class={`w-8 fill-white ${quantity < 2 ? 'opacity-20' : 'opacity-100'} transition-opacity`}
 				/>
 			</div>
 			<input class="w-24 rounded bg-transparent text-center text-7xl" value={quantity} disabled />

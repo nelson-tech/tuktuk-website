@@ -13,6 +13,7 @@
 	import TrashCan from '$icons/solid/trash-can.svg?component';
 	import Spinner from '$icons/solid/spinner-third.svg?component';
 	import EmptyCart from '$icons/duotone/cart-circle-xmark.svg?component';
+	// import getPosUrl from '$lib/gql/square';
 
 	const updateCartItem = new UpdateCartItemQuantityStore();
 	const removeCartItem = new RemoveCartItemStore();
@@ -51,6 +52,20 @@
 
 	const handleClearCart = async () => {
 		await clearCart.mutate(null);
+	};
+
+	const handleSubmit = () => {
+		console.log('Submitting');
+
+		// const posUrl = getPosUrl(cart?.total ?? 0);
+
+		// console.log('Submitting', posUrl);
+
+		// console.log('agent is:', window?.navigator?.userAgent);
+
+		// console.log('platform is: ', window?.navigator?.platform);
+
+		// console.log('user agent data: ', window?.navigator?.userAgentData);
 	};
 </script>
 
@@ -119,18 +134,24 @@
 		{/if}
 	</div>
 	<div class="flex flex-col justify-between items-center">
-		<button class="px-8 py-4 bg-pink-500 rounded-lg self-end text-4xl" disabled={loading}>
+		<button
+			class="px-8 py-4 bg-pink-500 rounded-lg self-end text-4xl"
+			disabled={loading}
+			on:click={handleSubmit}
+		>
 			{#if loading}
 				<Spinner class=" animate-spin w-10 mx-[47px] my-0.5 fill-white" />
 			{:else}Pay ${cart?.total}
 			{/if}</button
 		>
-		<div
-			class="mt-8"
-			on:click|preventDefault={handleClearCart}
-			on:keydown|preventDefault={handleClearCart}
-		>
-			<EmptyCart class="w-16 p-2 fill-white [&_path]:!opacity-80 [&_.fa-primary]:fill-red-500" />
-		</div>
+		{#if (cart?.count ?? 0) > 0}
+			<div
+				class="mt-8"
+				on:click|preventDefault={handleClearCart}
+				on:keydown|preventDefault={handleClearCart}
+			>
+				<EmptyCart class="w-16 p-2 fill-white [&_path]:!opacity-80 [&_.fa-primary]:fill-red-500" />
+			</div>
+		{/if}
 	</div>
 </div>
