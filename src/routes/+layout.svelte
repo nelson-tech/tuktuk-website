@@ -18,6 +18,9 @@
 	import Drawer from '$components/Drawer';
 	import { drawerStore } from '@skeletonlabs/skeleton';
 	import type { LayoutData } from './$types';
+	import { onMount } from 'svelte';
+	import { PUBLIC_API_URL } from '$env/static/public';
+	import { ClearCartStore } from '$houdini';
 
 	const togglePower: EventHandler<Event> = (e) => {
 		uiStore.update((store) => ({ ...store, activated: !store.activated }));
@@ -40,6 +43,27 @@
 	$: ({ GetCart } = data);
 
 	$: cart = $GetCart.data?.getCart;
+
+	const clearCart = new ClearCartStore();
+
+	const checkCartStatus = async () => {
+		const res = await fetch(`${PUBLIC_API_URL}/api/carts/${cart?.id}/reset`);
+
+		const data = await res.json();
+
+		if (data.reset) {
+			await clearCart.mutate(null);
+			uiStore.reset();
+		}
+	};
+
+	onMount(() => {
+		const interval = setInterval(() => {
+			checkCartStatus();
+		}, 60 * 1000);
+
+		return () => clearInterval(interval);
+	});
 </script>
 
 <div class={`bg-black min-h-screen ${$uiStore.shopping ? '' : 'overflow-hidden'}`}>
