@@ -4,8 +4,6 @@ import { HoudiniClient } from '$houdini';
 export default new HoudiniClient({
 	url: `${PUBLIC_API_URL}/api/graphql`,
 	fetchParams({ session }) {
-		console.log('Session');
-
 		return {
 			headers: {
 				Authorization: `users API-Key ${session?.apiKey}`
